@@ -4,6 +4,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
+	"sigs.k8s.io/cluster-api/errors"
 )
 
 type GKEMachinePoolSpec struct {
@@ -22,6 +23,8 @@ type GKEMachinePoolStatus struct {
 	// Ready is true when the provider resource is ready.
 	// +optional
 	Ready bool `json:"ready"`
+	FailureMessage *string `json:"failureMessage,omitempty"`
+	FailureReason *errors.MachineStatusError `json:"failureReason,omitempty"`
 
 }
 
