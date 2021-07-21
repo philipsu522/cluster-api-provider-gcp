@@ -16,6 +16,7 @@
 # https://www.thapaliya.com/en/writings/well-documented-makefiles/
 
 # Ensure Make is run with bash shell as some syntax below is bash-specific
+# Test
 SHELL:=/usr/bin/env bash
 
 .DEFAULT_GOAL:=help
