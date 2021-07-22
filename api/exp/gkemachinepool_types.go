@@ -4,6 +4,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
+	infrav1 "sigs.k8s.io/cluster-api-provider-gcp/api/v1alpha3"
 	"sigs.k8s.io/cluster-api/errors"
 )
 
@@ -48,6 +49,16 @@ type GKEMachinePool struct {
     Status GKEMachinePoolStatus `json:"status,omitempty"`
 }
 
+type GKEMachinePoolList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []GKEMachinePool `json:"items"`
+}
+
+func (G GKEMachinePoolList) DeepCopyObject() runtime.Object {
+	panic("implement me")
+}
+
 func (G GKEMachinePool) GetObjectKind() schema.ObjectKind {
 	panic("implement me")
 }
@@ -62,5 +73,9 @@ func (G GKEMachinePool) DeepCopy() *GKEMachinePool {
 
 func (in *GKEMachinePool) DeepCopyInto(out *GKEMachinePool) {
 	panic("implement me")
+}
+
+func init() {
+	infrav1.SchemeBuilder.Register(&GKEMachinePool{}, &GKEMachinePoolList{})
 }
 
