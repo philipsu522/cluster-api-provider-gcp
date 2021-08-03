@@ -22,7 +22,7 @@ import (
 	"github.com/pkg/errors"
 	//"google.golang.org/api/container/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
-	"k8s.io/apimachinery/pkg/runtime"
+	//"k8s.io/apimachinery/pkg/runtime"
 	"sigs.k8s.io/cluster-api-provider-gcp/cloud/scope"
 	"sigs.k8s.io/cluster-api-provider-gcp/util/reconciler"
 	//clusterv1 "sigs.k8s.io/cluster-api/api/v1alpha3"
@@ -40,7 +40,6 @@ import (
 type GKEClusterReconciler struct {
 	client.Client
 	Log    logr.Logger
-	Scheme *runtime.Scheme
 	ReconcileTimeout time.Duration
 }
 
